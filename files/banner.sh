@@ -52,7 +52,7 @@ $color
                                                        
                          \e[33mSON GÜNCELLEME :\e[0m $(cat updates_infos |sed -n 1p)
          \e[1;97m+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-              $color C O D E D   B Y   E M O S S  D E V
+              $color R E C O D E D   B Y   E M O S S  D E V
          \e[97m+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 	 \e[97m+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 	           $color T E R M U X    T O O L S 
