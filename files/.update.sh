@@ -1,5 +1,5 @@
 #!/bin/bash
-# Coded By Umut KaRa
+# ReCoded By EmossDev
 # Tam Çözülmüş ve De-obfuscate Edilmiş Sürüm
 
 # GÖRSEL GÜNCELLEME EKRANI FONKSİYONU
