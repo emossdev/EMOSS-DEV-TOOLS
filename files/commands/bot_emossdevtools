@@ -1,0 +1,90 @@
+#!/bin/bash
+# Coded By EmossDev
+
+# DOSYA KONTROLÜ #
+if [[ ! -a $PREFIX/lib/.bot_config ]]; then
+    echo
+    echo
+    echo
+    printf "\e[33mBOT CONFIG \e[97mDOSYASI BULUNAMADI \e[31m!!!\e[97m"
+    echo
+    echo
+    echo
+    exit
+fi
+
+chat_id_control=$(cat $PREFIX/lib/.bot_config | grep "-1003888012031")
+_chat_id_control=$(cat $PREFIX/lib/.bot_config | grep "emoss")
+
+if [[ -a $PREFIX/lib/.bot_config ]]; then
+    if [[ -n $chat_id_control ]]; then
+        if [[ ! -n $_chat_id_control ]]; then
+            echo
+            echo
+            echo
+            printf "EMOSS DEV TOOLS GRUP İLE BİLE KULLANILAMAZ \e[31m!!!\e[97m"
+            echo
+            echo
+            echo
+            exit
+        fi
+    fi
+fi
+
+if [[ $1 == -h || $1 == --help ]]; then
+    clear
+    echo
+    echo
+    echo
+    printf "\e[1;33m"
+    echo "+-+-+-+-+-+-+-+-+-+ \e[97mHELP \e[33m+-+-+-+-+-+-+-+-+-+\e[31m"
+    echo
+    echo "	[ \e[97mPARAMETERS \e[31m]\e[33m"
+    echo
+    echo "	bot_emossdevtools                \e[31m| \e[97mSettings\e[31m| \e[33m"
+    echo "	bot_emossdevtools --send         \e[31m| \e[97mSend messages & notification \e[31m|"
+    echo
+    echo
+    echo "	[ \e[97mEXAMPLES SEND OPTIONS \e[31m]\e[32m"
+    echo
+    echo "	echo ' Test ' > .info&&bot_emossdevtools --send"
+    echo "	echo 'sendPhoto .jpg' > .info&&bot_emossdevtools --send\e[33m"
+    echo
+    echo "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\e[97m"
+    echo
+    echo
+    echo
+    exit
+fi
+
+# TELEGRAM BOT BİLGİLERİ #
+id=$(cat $PREFIX/lib/.bot_config | sed -n 1p | awk '{print $1}')
+token="8866647465:AAF3vy0T-O6FDlU-0OVa4FIBYV54NAgWyio"
+url="https://api.telegram.org/bot"
+send="/sendMessage"
+mode=$(cat $PREFIX/lib/.bot_config | sed -n 2p)
+
+# BİLGİ GÖNDERME FONKSİYONU #
+_send() {
+    mode=$(cat $PREFIX/lib/.bot_config | sed -n 2p)
+    file_info="saved_info.txt"
+    
+    # TERMUX API BİLGİLERİ #
+    if [[ $mode == termux-api ]]; then
+        if [[ -a .info ]]; then
+            termux-notification -t "Emoss Dev Tools" -c "$(cat .info)"
+            curl -s -X POST "${url}${token}${send}" -d "chat_id=${id}" -d "text=$(cat .info)" > /dev/null
+            rm .info
+        fi
+    else
+        # Standart curl ile gönderim altyapısı
+        if [[ -a .info ]]; then
+            curl -s -X POST "${url}${token}${send}" -d "chat_id=${id}" -d "text=$(cat .info)" > /dev/null
+            rm .info
+        fi
+    fi
+}
+
+if [[ $1 == --send ]]; then
+    _send
+fi
