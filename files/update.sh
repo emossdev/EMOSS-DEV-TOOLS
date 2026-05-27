@@ -1,5 +1,5 @@
 #!/bin/bash
-# Coded By EmossDev
+# ReCoded By EmossDev
 
 tool_update_coder() {
     printf "\e[1;32m"
