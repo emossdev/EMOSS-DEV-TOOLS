@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-githubUsername="umutkara-tools"
+githubUsername="EmossDev"
 
 if [[ $1 == update ]];then
 	cd files
@@ -49,33 +49,33 @@ if [[ $control == 0 ]];then
 	echo
 	exit
 fi
-if [[ -a $PREFIX/lib/UMUT-KARA-TOOLS ]];then
+if [[ -a $PREFIX/lib/EMOSS-DEV-TOOLS ]];then
 	
-	control=$(cat $PREFIX/lib/UMUT-KARA-TOOLS/.git/config |grep url |awk -F '/' '{print $4}')
+	control=$(cat $PREFIX/lib/EMOSS-DEV-TOOLS/.git/config |grep url |awk -F '/' '{print $4}')
 	
 	if [[ $control != $githubUsername ]];then
 		
-		rm -rf $HOME/.UMUT-KARA-TOOLS
+		rm -rf $HOME/.EMOSS-DEV-TOOLS
 		
-		if [[ -a $PREFIX/bin/umutkaratools ]];then
-			rm $PREFIX/bin/umutkaratools
+		if [[ -a $PREFIX/bin/emossdevtools ]];then
+			rm $PREFIX/bin/emossdevtools
 		fi
 	fi	
 fi
-if [[ ! -a $PREFIX/bin/umutkaratools ]];then
+if [[ ! -a $PREFIX/bin/emossdevtools ]];then
 	cd files
-	cp .tools-umutkara /data/data/com.termux/files/usr/bin/umutkaratools
+	cp .tools-emossdev /data/data/com.termux/files/usr/bin/emossdevtools
 	cd ..
-	mkdir $PREFIX/lib/UMUT-KARA-TOOLS
-	mv * $PREFIX/lib/UMUT-KARA-TOOLS
-	mv .git $PREFIX/lib/UMUT-KARA-TOOLS
+	mkdir $PREFIX/lib/EMOSS-DEV-TOOLS
+	mv * $PREFIX/lib/EMOSS-DEV-TOOLS
+	mv .git $PREFIX/lib/EMOSS-DEV-TOOLS
 	cd $HOME
-	repoName=$(cat UMUT-KARA-TOOLS/.git/config |grep url |awk -F '/' '{print $5}')
+	repoName=$(cat EMOSS-DEV-TOOLS/.git/config |grep url |awk -F '/' '{print $5}')
 	if [[ -a $repoName ]];then
 		rm -rf $repoName
 	fi
-	chmod 777 /data/data/com.termux/files/usr/bin/umutkaratools
-	chmod 777 $PREFIX/lib/UMUT-KARA-TOOLS/umut-kara-tools.sh
+	chmod 777 /data/data/com.termux/files/usr/bin/emossdevtools
+	chmod 777 $PREFIX/lib/EMOSS-DEV-TOOLS/emoss-dev-tools.sh
 	echo
 	echo
 	echo
@@ -95,7 +95,7 @@ if [[ ! -a $PREFIX/bin/umutkaratools ]];then
 	echo
 	printf "\e[32m
 	\t╔════════════════════════════════════╗
-	\t║ \e[97mÇALIŞTIRMAK İÇİN \e[32mumutkaratools \e[97mYAZ \e[32m║
+	\t║ \e[97mÇALIŞTIRMAK İÇİN \e[32memossdevtools \e[97mYAZ \e[32m║
 	\t╚════════════════════════════════════╝\e[97m"
 	echo
 	echo
@@ -126,7 +126,7 @@ done
 echo
 echo
 echo
-read -e -p $' \e[97m[ \e[92mUᴍᴜᴛKᴀRᴀTᴏᴏʟꜱ \e[97m]\e[92m ~ \e[91m»» \e[0m' secim
+read -e -p $' \e[97m[ \e[92mEmossDevTools \e[97m]\e[92m ~ \e[91m»» \e[0m' secim
 if [[ $secim == x || $secim == X || $secim == exit ]];then
 	echo
 	echo
